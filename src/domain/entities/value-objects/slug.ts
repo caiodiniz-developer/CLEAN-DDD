@@ -5,4 +5,7 @@ export class slug {
     this.value = value;
   }
 
+  static createFromText(text: string) {
+    const slugText = text.normalize("NFKD");
+  }
 }
