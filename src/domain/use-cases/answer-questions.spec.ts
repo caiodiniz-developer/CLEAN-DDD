@@ -2,7 +2,9 @@ import { expect, test } from "vitest";
 import { AnswerQuestionUseCase } from "./answer-question.js";
 
 test("create an answer", () => {
-  const answerQuestion = new AnswerQuestionUseCase();
+  const answerQuestion = new AnswerQuestionUseCase({
+    create: () => {},
+  } as never);
 
   const answer = answerQuestion.execute({
     questionId: "1",
