@@ -14,4 +14,4 @@ class AnswerQuestionUseCase {
 new AnswerQuestionUseCase().execute({
   questionId: "1",
   instructorId: "2",
-})
+});

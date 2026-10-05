@@ -1,9 +1,14 @@
-export class Question {
-  public content: string;
-  public id: string;
+export interface QuestionProps {
+  content: string;
+  id?: string;
+}
 
-  constructor(content: string, id?: string) {
-    this.content = content;
-    this.id = id ?? globalThis.crypto.randomUUID();
+export class Question {
+  public id: string;
+  public content: string;
+
+  constructor(props: QuestionProps) {
+    this.content = props.content;
+    this.id = props.id ?? globalThis.crypto.randomUUID();
   }
 }
