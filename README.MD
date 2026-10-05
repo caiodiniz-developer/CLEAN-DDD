@@ -1,28 +1,22 @@
--Oque e DDD
+# DDD (Domain-driven Design)
 
--DDD me ajuda a modelar o sistema de acordo com as regras e conceitos do negócio. Clean Architecture me ajuda a separar responsabilidades e manter o domínio independente de frameworks e infraestrutura.
+Design dirigido à domínio
 
-Por exemplo, em um sistema financeiro:
+## Domínio
 
-User
-Account
-Transaction
-Invoice
-Payment
-Subscription
+- Domain Experts
+  - Conversa
+- Linguagem ubíqua
 
-Você cria conceitos que representam o negócio.
+- Usuário
+  - Cliente
+  - Fornecedor
+  - Atendente
+  - Barman
 
-Uma Transaction, por exemplo, pode ter regras próprias:
-
-class Transaction {
-  constructor(
-    public readonly id: string,
-    public readonly amount: number,
-    public readonly type: "INCOME" | "EXPENSE"
-  ) {}
-
-  isExpense() {
-    return this.type === "EXPENSE";
-  }
-}
+- Agregados
+- Value Objects
+- Eventos de domínio
+- Subdomínios (Bounded Contexts)
+- Entidades
+- Casos de uso
