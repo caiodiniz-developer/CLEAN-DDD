@@ -1,4 +1,9 @@
-import { Answer } from "../entities/answer.js";
+class Answer {
+  constructor(
+    public instructorId: string,
+    public questionId: string,
+  ) {}
+}
 
 interface AnswerQuestionUseCaseRequest {
   instructorId: string;
@@ -6,8 +11,10 @@ interface AnswerQuestionUseCaseRequest {
 }
 
 class AnswerQuestionUseCase {
-  execute({ instructorId, questionId }: AnswerQuestionUseCaseRequest) {
-    const answer = new Answer();
+  execute({ instructorId, questionId }: AnswerQuestionUseCaseRequest): Answer {
+    const answer = new Answer(instructorId, questionId);
+
+    return answer;
   }
 }
 
