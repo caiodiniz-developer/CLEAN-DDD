@@ -1,8 +1,8 @@
 {
   "name": "clean-ddd",
   "version": "1.0.0",
-  "description": "-Oque e DDD",
-  "main": "index.js",
+  "description": "Clean Architecture & DDD em TypeScript",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,16 +10,5 @@
     "type": "git",
     "url": "git+https://github.com/caiodiniz-developer/CLEAN-DDD.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/caiodiniz-developer/CLEAN-DDD/issues"
-  },
-  "homepage": "https://github.com/caiodiniz-developer/CLEAN-DDD#readme",
-  "devDependencies": {
-    "@types/node": "^26.6.4",
-    "typescript": "^7.0.2"
-  }
+  "license": "ISC"
 }

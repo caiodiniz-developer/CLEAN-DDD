@@ -1,4 +1,4 @@
-class Question {
+export class Question {
   public title: string;
   public content: string;
   public id: string;
@@ -9,5 +9,3 @@ class Question {
     this.id = id ?? globalThis.crypto.randomUUID();
   }
 }
-
-export = Question;

@@ -1,4 +1,4 @@
-class Instructor {
+export class Instructor {
   public id: string;
   public name: string;
 
@@ -7,5 +7,3 @@ class Instructor {
     this.id = id ?? globalThis.crypto.randomUUID();
   }
 }
-
-export = Instructor;
