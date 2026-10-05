@@ -1,4 +1,7 @@
 export class slug {
+  static value(value: any) {
+    throw new Error("Method not implemented.");
+  }
   public value: string;
 
   constructor(value: string) {
