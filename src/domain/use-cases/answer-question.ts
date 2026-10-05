@@ -1,24 +1,15 @@
-class Answer {
-  constructor(
-    public instructorId: string,
-    public questionId: string,
-  ) {}
-}
+import { Answer } from "../entities/answer.js";
 
 interface AnswerQuestionUseCaseRequest {
   instructorId: string;
   questionId: string;
+  content: string;
 }
 
-class AnswerQuestionUseCase {
-  execute({ instructorId, questionId }: AnswerQuestionUseCaseRequest): Answer {
-    const answer = new Answer(instructorId, questionId);
+export class AnswerQuestionUseCase {
+  execute({ instructorId, questionId, content }: AnswerQuestionUseCaseRequest) {
+    const answer = new Answer(content);
 
     return answer;
   }
 }
-
-new AnswerQuestionUseCase().execute({
-  questionId: "1",
-  instructorId: "2",
-});

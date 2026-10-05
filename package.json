@@ -10,5 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/caiodiniz-developer/CLEAN-DDD.git"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vitest": "^5.0.3"
+  }
 }
