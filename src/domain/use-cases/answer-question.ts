@@ -4,5 +4,10 @@ interface AnswerQuestionUseCaseRequest {
 }
 
 class AnswerQuestionUseCase {
-  execute() {}
+  execute({ instructorId, questionId }: AnswerQuestionUseCaseRequest) {}
 }
+
+new AnswerQuestionUseCase().execute({
+  questionId: "1",
+  instructorId: "2",
+});
