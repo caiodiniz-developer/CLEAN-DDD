@@ -10,7 +10,7 @@ interface QuestionProps {
 export class Question {
   public title: string;
   public content: string;
-  public slug: string;
+  public slug: slug;
   public id: string;
   public authorId: string;
 
