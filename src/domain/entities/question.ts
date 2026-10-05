@@ -1,6 +1,8 @@
+import type { slug } from "./value-objects/slug.js";
+
 interface QuestionProps {
   title: string;
-  slug: string;
+  slug: slug;
   authorId: string;
   content: string;
 }
