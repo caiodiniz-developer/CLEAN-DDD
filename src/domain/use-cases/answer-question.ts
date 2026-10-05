@@ -1,3 +1,5 @@
-class AnswerQuestionUser {
-
+class AnswerQuestionUseCase {
+  execute() {
+    
+  }
 }
