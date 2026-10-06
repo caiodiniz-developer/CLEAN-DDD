@@ -1,3 +1,4 @@
+import { Entity } from "../../core/entities/entity.js";
 import type { slug } from "./value-objects/slug.js";
 
 interface QuestionProps {
@@ -7,18 +8,5 @@ interface QuestionProps {
   content: string;
 }
 
-export class Question {
-  public title: string;
-  public content: string;
-  public slug: slug;
-  public id: string;
-  public authorId: string;
-
-  constructor(props: QuestionProps, id?: string) {
-    this.title = props.title;
-    this.content = props.content;
-    this.slug = props.slug;
-    this.authorId = props.authorId;
-    this.id = id ?? globalThis.crypto.randomUUID();
-  }
+export class Question extends Entity<QuestionProps> {
 }
