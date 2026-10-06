@@ -2,6 +2,10 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "nodenext",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["vitest/globals"],
     "moduleResolution": "nodenext",
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
