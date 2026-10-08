@@ -1,24 +1,23 @@
-import { expect, test } from 'vitest'
-import type { Question } from '../../enterprise/entities/question.js'
-import type { QuestionsRepository } from '../repositories/questions-repository.js'
+import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository.js'
 import { CreateQuestionUseCase } from './create-question.js'
 
-let savedQuestion: Question | undefined
+let inMemoryQuestionsRepository: InMemoryQuestionsRepository
+let sut: CreateQuestionUseCase
 
-const fakeQuestionsRepository: QuestionsRepository = {
-  create: async (question) => {
-    savedQuestion = question
-  },
-}
-
-test('creates and saves a question', async () => {
-  const createQuestion = new CreateQuestionUseCase(fakeQuestionsRepository)
-  const question = await createQuestion.execute({
-    authorId: '1',
-    title: 'Pergunta nova',
-    content: 'Conteudo da pergunta',
+describe('Create Question', () => {
+  beforeEach(() => {
+    inMemoryQuestionsRepository = new InMemoryQuestionsRepository()
+    sut = new CreateQuestionUseCase(inMemoryQuestionsRepository)
   })
 
-  expect(question.question.content).toBe('Conteudo da pergunta')
-  expect(savedQuestion).toBe(question.question)
+  it('should be able to create a question', async () => {
+    const { question } = await sut.execute({
+      authorId: '1',
+      title: 'Nova pergunta',
+      content: 'Conteúdo da pergunta',
+    })
+
+    expect(question.id).toBeTruthy()
+    expect(inMemoryQuestionsRepository.items[0]).toEqual(question)
+  })
 })
