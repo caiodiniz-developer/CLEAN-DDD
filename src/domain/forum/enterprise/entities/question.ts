@@ -3,12 +3,12 @@ import type { UniqueEntityId } from '../../../../core/entities/unique-entity-id.
 import type { Optional } from '../../../../core/types/optional.js'
 import { Slug } from './value-objects/slug.js'
 
-interface QuestionProps {
+export interface QuestionProps {
   authorId: UniqueEntityId
   bestAnswerId?: UniqueEntityId
   title: string
-  slug: Slug
   content: string
+  slug: Slug
   createdAt: Date
   updatedAt?: Date
 }
@@ -22,8 +22,16 @@ export class Question extends Entity<QuestionProps> {
     return this.props.bestAnswerId
   }
 
+  get title() {
+    return this.props.title
+  }
+
   get content() {
     return this.props.content
+  }
+
+  get slug() {
+    return this.props.slug
   }
 
   get createdAt() {
@@ -48,19 +56,22 @@ export class Question extends Entity<QuestionProps> {
     this.props.updatedAt = new Date()
   }
 
+  set title(title: string) {
+    this.props.title = title
+    this.props.slug = Slug.createFromText(title)
+    this.touch()
+  }
+
   set content(content: string) {
     this.props.content = content
     this.touch()
   }
 
-  set bestAnswerId(bestAnswerId: UniqueEntityId) {
-    this.props.bestAnswerId = bestAnswerId
-    this.touch()
-  }
+  set bestAnswerId(bestAnswerId: UniqueEntityId | undefined) {
+    if (bestAnswerId) {
+      this.props.bestAnswerId = bestAnswerId
+    }
 
-  set title(title: string) {
-    this.props.title = title
-    this.props.slug = Slug.createFromText(title)
     this.touch()
   }
 
