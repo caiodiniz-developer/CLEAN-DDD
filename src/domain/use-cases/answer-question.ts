@@ -1,6 +1,6 @@
 import { UniqueEntityId } from '../../core/entities/unique-entity-id.js'
 import { Answer } from '../forum/enterprise/entities/answer.js'
-import type { AnswerRepository } from '../forum/application/repositories/answers-repository.js'
+import type { AnswersRepository } from '../forum/application/repositories/answers-repository.js'
 
 interface AnswerQuestionUseCaseRequest {
   instructorId: string
@@ -9,7 +9,7 @@ interface AnswerQuestionUseCaseRequest {
 }
 
 export class AnswerQuestionUseCase {
-  constructor(private answersRepository: AnswerRepository) {}
+  constructor(private answersRepository: Pick<AnswersRepository, 'create'>) {}
 
   async execute({
     instructorId,
