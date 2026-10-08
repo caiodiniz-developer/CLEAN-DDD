@@ -1,21 +1,19 @@
-import { expect, test } from "vitest";
-import { AnswerQuestionUseCase } from "./answer-question.js";
-import type { AnswerRepository } from "../forum/application/repositories/answers-repository.js";
-import type { Answer } from "../forum/enterprise/entities/answer.js";
+import { expect, test } from 'vitest'
+import { AnswerQuestionUseCase } from './answer-question.js'
+import type { AnswerRepository } from '../forum/application/repositories/answers-repository.js'
+import type { Answer } from '../forum/enterprise/entities/answer.js'
 
 const fakeAnswerRepository: AnswerRepository = {
-  create: async function (_answer: Answer) {
-    return;
-  },
-};
+  create: async function (_answer: Answer) {},
+}
 
-test("create an answer", async () => {
-  const answerQuestion = new AnswerQuestionUseCase(fakeAnswerRepository);
+test('create an answer', async () => {
+  const answerQuestion = new AnswerQuestionUseCase(fakeAnswerRepository)
   const answer = await answerQuestion.execute({
-    questionId: "1",
-    instructorId: "1",
-    content: "Nova resposta",
-  });
+    questionId: '1',
+    instructorId: '1',
+    content: 'Nova resposta',
+  })
 
-  expect(answer.content).toEqual("Nova resposta");
-});
+  expect(answer.content).toEqual('Nova resposta')
+})
