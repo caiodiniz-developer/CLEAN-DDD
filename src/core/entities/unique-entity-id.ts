@@ -1,15 +1,15 @@
 export class UniqueEntityId {
-  private value: string;
+  private value: string
 
   toString() {
-    return this.value;
+    return this.value
   }
 
   toValue() {
-    return this.value;
+    return this.value
   }
 
   constructor(value?: string) {
-    this.value = value ?? globalThis.crypto.randomUUID();
+    this.value = value ?? globalThis.crypto.randomUUID()
   }
 }
