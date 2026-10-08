@@ -18,7 +18,7 @@ export class Question extends Entity<QuestionProps> {
     return this.props.authorId
   }
 
-  get questionId() {
+  get bestAnswerId() {
     return this.props.bestAnswerId
   }
 
@@ -31,7 +31,7 @@ export class Question extends Entity<QuestionProps> {
   }
 
   get updatedAt() {
-    return this.props.content
+    return this.props.updatedAt
   }
 
   get isNew(): boolean {
