@@ -1,4 +1,4 @@
-export class slug {
+export class Slug {
   public value: string
 
   constructor(value: string) {
@@ -15,6 +15,6 @@ export class slug {
       .replace(/_/g, '-')
       .replace(/--+/g, '-')
 
-    return new slug(slugText)
+    return new Slug(slugText)
   }
 }

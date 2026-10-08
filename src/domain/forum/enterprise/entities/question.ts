@@ -1,13 +1,13 @@
 import { Entity } from '../../../../core/entities/entity.js'
 import type { UniqueEntityId } from '../../../../core/entities/unique-entity-id.js'
 import type { Optional } from '../../../../core/types/optional.js'
-import { slug } from './value-objects/slug.js'
+import { Slug } from './value-objects/slug.js'
 
 interface QuestionProps {
   authorId: UniqueEntityId
   bestAnswerId?: UniqueEntityId
   title: string
-  slug: slug
+  slug: Slug
   content: string
   createdAt: Date
   updatedAt?: Date
@@ -60,7 +60,7 @@ export class Question extends Entity<QuestionProps> {
 
   set title(title: string) {
     this.props.title = title
-    this.props.slug = slug.createFromText(title)
+    this.props.slug = Slug.createFromText(title)
     this.touch()
   }
 
@@ -71,7 +71,7 @@ export class Question extends Entity<QuestionProps> {
     const question = new Question(
       {
         ...props,
-        slug: props.slug ?? slug.createFromText(props.title),
+        slug: props.slug ?? Slug.createFromText(props.title),
         createdAt: new Date(),
       },
       id,
