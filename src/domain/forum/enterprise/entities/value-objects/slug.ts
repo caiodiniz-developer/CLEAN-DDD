@@ -1,7 +1,4 @@
 export class slug {
-  static value(value: any) {
-    throw new Error("Method not implemented.");
-  }
   public value: string;
 
   constructor(value: string) {
@@ -16,8 +13,7 @@ export class slug {
       .replace(/\s+/g, "-")
       .replace(/[^\w-]+/g, "")
       .replace(/_/g, "-")
-      .replace(/--+/g, "-")
-      .replace(/-/g, "");
+      .replace(/--+/g, "-");
 
     return new slug(slugText);
   }

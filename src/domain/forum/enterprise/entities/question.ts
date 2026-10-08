@@ -1,6 +1,6 @@
-import { Entity } from "../../core/entities/entity.js";
-import type { UniqueEntityId } from "../../core/entities/unique-entity-id.js";
-import type { Optional } from "../../core/types/optional.js";
+import { Entity } from "../../../../core/entities/entity.js";
+import type { UniqueEntityId } from "../../../../core/entities/unique-entity-id.js";
+import type { Optional } from "../../../../core/types/optional.js";
 import { slug } from "./value-objects/slug.js";
 
 interface QuestionProps {
@@ -23,7 +23,7 @@ export class Question extends Entity<QuestionProps> {
   }
 
   get content() {
-    return this.props.title;
+    return this.props.content;
   }
 
   get createdAt() {
