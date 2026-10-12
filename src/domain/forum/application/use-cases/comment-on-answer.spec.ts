@@ -1,6 +1,7 @@
 import { makeAnswer } from 'test/factories/make-answer.js'
 import { InMemoryAnswerCommentsRepository } from 'test/repositories/in-memory-answer-comments-repository.js'
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository.js'
+import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error.js'
 import { CommentOnAnswerUseCase } from './comment-on-answer.js'
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository
@@ -34,12 +35,13 @@ describe('Comment on Answer', () => {
   })
 
   it('should not be able to comment on an answer that does not exist', async () => {
-    await expect(() =>
-      sut.execute({
-        answerId: 'non-existing-answer',
-        authorId: 'author-1',
-        content: 'Comentário teste',
-      }),
-    ).rejects.toBeInstanceOf(Error)
+    const result = await sut.execute({
+      answerId: 'non-existing-answer',
+      authorId: 'author-1',
+      content: 'Comentário teste',
+    })
+
+    expect(result.isLeft()).toBe(true)
+    expect(result.value).toBeInstanceOf(ResourceNotFoundError)
   })
 })
