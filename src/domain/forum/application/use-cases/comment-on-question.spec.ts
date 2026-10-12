@@ -1,6 +1,7 @@
 import { makeQuestion } from 'test/factories/make-question.js'
 import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository.js'
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository.js'
+import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error.js'
 import { CommentOnQuestionUseCase } from './comment-on-question.js'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
@@ -35,12 +36,13 @@ describe('Comment on Question', () => {
   })
 
   it('should not be able to comment on a question that does not exist', async () => {
-    await expect(() =>
-      sut.execute({
-        questionId: 'non-existing-question',
-        authorId: 'author-1',
-        content: 'Comentário teste',
-      }),
-    ).rejects.toBeInstanceOf(Error)
+    const result = await sut.execute({
+      questionId: 'non-existing-question',
+      authorId: 'author-1',
+      content: 'Comentário teste',
+    })
+
+    expect(result.isLeft()).toBe(true)
+    expect(result.value).toBeInstanceOf(ResourceNotFoundError)
   })
 })
