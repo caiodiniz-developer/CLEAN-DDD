@@ -1,15 +1,21 @@
 import { makeAnswer } from 'test/factories/make-answer.js'
+import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/in-memory-answer-attachments-repository.js'
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository.js'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id.js'
 import { NotAllowedError } from '@/core/errors/errors/not-allowed-error.js'
 import { EditAnswerUseCase } from './edit-answer.js'
 
+let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: EditAnswerUseCase
 
 describe('Edit Answer', () => {
   beforeEach(() => {
-    inMemoryAnswersRepository = new InMemoryAnswersRepository()
+    inMemoryAnswerAttachmentsRepository =
+      new InMemoryAnswerAttachmentsRepository()
+    inMemoryAnswersRepository = new InMemoryAnswersRepository(
+      inMemoryAnswerAttachmentsRepository,
+    )
     sut = new EditAnswerUseCase(inMemoryAnswersRepository)
   })
 
