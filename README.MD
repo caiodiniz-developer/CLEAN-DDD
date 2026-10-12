@@ -43,3 +43,18 @@ Arquitetura limpa: o código é organizado em camadas e as dependências sempre 
 - `src/domain/forum/enterprise`: entidades e value objects
 - `src/domain/forum/application`: casos de uso e contratos de repositórios
 - `test`: repositórios em memória e factories usados nos testes
+- `src/domain/notification`: subdomínio de notificações (entidade, casos de uso e subscribers)
+
+## Conceitos aplicados
+
+- Either (`src/core/either.ts`): casos de uso retornam `left` (erro) ou `right` (sucesso) em vez de lançar exceções
+- Aggregate Root: `Question` e `Answer` são agregados e controlam seus anexos
+- Watched List: lista que sabe quais itens foram adicionados e removidos (usada nos anexos)
+- Domain Events: o agregado registra o evento e o repositório dispara ao persistir
+- Subscribers: o subdomínio de notificações escuta eventos do fórum (`OnAnswerCreated`, `OnQuestionBestAnswerChosen`)
+
+## Scripts
+
+- `npm test`: roda os testes
+- `npm run test:watch`: testes em modo watch
+- `npm run lint`: verifica o código com ESLint
